@@ -78,22 +78,22 @@ public class Main {
 
         String[] classes = command.getOptionValue('t').split(",");
         List<Class<? extends Annotation>> c =
-            FluentIterable.of(classes).transform(
-                                                 new Function<String, Class<? extends Annotation>>() {
+            FluentIterable.from(classes).transform(
+                                                   new Function<String, Class<? extends Annotation>>() {
 
-                                                   @Nullable
-                                                   @Override
-                                                   public Class<? extends Annotation> apply(@Nullable String input) {
+                                                     @Nullable
+                                                     @Override
+                                                     public Class<? extends Annotation> apply(@Nullable String input) {
 
-                                                     try {
-                                                       return (Class<? extends Annotation>) Class.forName(input);
-                                                     } catch (ClassNotFoundException e) {
-                                                       throw new IllegalArgumentException(
-                                                                                          "while building translated annotations list",
-                                                                                          e);
+                                                       try {
+                                                         return (Class<? extends Annotation>) Class.forName(input);
+                                                       } catch (ClassNotFoundException e) {
+                                                         throw new IllegalArgumentException(
+                                                                                            "while building translated annotations list",
+                                                                                            e);
+                                                       }
                                                      }
-                                                   }
-                                                 }).toList();
+                                                   }).toList();
 
         builder.withTranslatedAnnotations(c);
       }

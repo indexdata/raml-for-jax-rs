@@ -266,7 +266,7 @@ public abstract class Annotations<T> {
       return def;
     }
 
-    return getValueWithDefault(def, api, FluentIterable.of(others).transform(new Function<GAbstraction, Annotable>() {
+    return getValueWithDefault(def, api, FluentIterable.from(others).transform(new Function<GAbstraction, Annotable>() {
 
       @Nullable
       @Override

@@ -28,7 +28,7 @@ public class ClassLoaderUtils {
 
   public static ClassLoader classLoaderFor(URL firstUrl, URL... theRest) {
 
-    URL[] allOfDem = FluentIterable.of(theRest).append(firstUrl).toArray(URL.class);
+    URL[] allOfDem = FluentIterable.from(theRest).append(firstUrl).toArray(URL.class);
 
     // In the absence of specific parent, we use the current one as the parent.
     // Otherwise, some incongruities might happen when running from the maven
